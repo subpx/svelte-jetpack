@@ -1,0 +1,27 @@
+<div>
+  <h3>Tool Tip</h3>
+
+  <p>Here is some test and <span class="tooltipElement" title="This is my tooltip">I have a tooltip</span></p>
+</div>
+
+
+<style>
+  .tooltipElement {
+    border-bottom: 2px solid blue;
+  }
+</style>
+
+<script>
+  import tippy from 'tippy.js';
+
+  export default {
+    oncreate() {
+      this.tooltip = tippy('.tooltipElement', {});
+    },
+    data() {
+      return {
+        selectedValue: ''
+      }
+    }
+  };
+</script>

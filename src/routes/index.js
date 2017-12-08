@@ -8,6 +8,7 @@ import FormValidation from '../modules/Shared/FormValidation/FormValidation.html
 import Sortable from '../modules/Shared/Sortable/Sortable.html';
 import DatePicker from '../modules/Shared/DatePicker/DatePicker.html';
 import AutoComplete from '../modules/Shared/AutoComplete/AutoComplete.html';
+import ToolTip from '../modules/Shared/ToolTip/ToolTip.html';
 
 const routes = () => {
   stateRouter.addState({
@@ -67,6 +68,12 @@ const routes = () => {
     name: 'app.autoComplete',
     route: '/autoComplete',
     template: AutoComplete
+  });
+
+  stateRouter.addState({
+    name: 'app.toolTip',
+    route: '/toolTip',
+    template: ToolTip
   });
 
   stateRouter.on('routeNotFound', (route, parameters) => {

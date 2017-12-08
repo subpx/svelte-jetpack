@@ -64,6 +64,7 @@
     "sortablejs": "^1.7.0",
     "svelte": "^1.43.1",
     "svelte-state-renderer": "^1.2.5",
+    "tippy.js": "^2.0.2",
     "validate-js": "^2.0.1"
   }
 }
