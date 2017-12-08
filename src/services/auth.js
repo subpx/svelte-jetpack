@@ -21,7 +21,7 @@ function authenticate() {
     headers
   };
 
-  return fetch(`http://localhost:9000/token.json`, init);
+  return fetch(`/token.json`, init);
 }
 
 export default {
