@@ -1,0 +1,43 @@
+<p>Any user/password combo works...</p>
+
+<form on:submit='handleSubmit(event)'>
+    <input type='text' placeholder='username' bind:value='credentials.username'>
+    <input type='password' placeholder='password' bind:value='credentials.password'>
+    <button type='submit'>Sign in</button>
+</form>
+
+<script>
+  import auth from '../../services/auth';
+  import router from '../../services/router';
+
+  export default {
+    data() {
+      return {
+        credentials: {
+          username: '',
+          password: ''
+        }
+      }
+    },
+    methods: {
+      handleSubmit(event) {
+        event.preventDefault();
+
+        auth.authenticate(this.get('credentials'))
+          .then((response) => {
+            if(response.status !== 200) {
+              return;
+            }
+
+            response.text().then((data) => {
+              auth.setToken(data.access_token);
+              router.go('app.dashboard');
+            });
+
+          }).catch(() => {
+
+        });
+      }
+    }
+  }
+</script>
