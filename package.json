@@ -8,7 +8,7 @@
     "dev": "node build-scripts/copy-assets.js && webpack-dev-server --config webpack.config/webpack.config.dev.js --open",
     "unit-test": "webpack --config webpack.config/webpack.config.test.js --watch",
     "e2e-test": "node_modules/.bin/cypress open",
-    "build": "webpack --config webpack.config/webpack.config.build.js --display-error-details",
+    "build": "node build-scripts/copy-assets.js && webpack --config webpack.config/webpack.config.build.js --display-error-details",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.js\""
   },
   "repository": {
