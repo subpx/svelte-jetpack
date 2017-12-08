@@ -1,0 +1,33 @@
+<div>
+  <h3>Auto Complete</h3>
+
+  <p>
+    <input type="text" id="autoCompleteInput" bind:value='selectedValue' placeholder="Select an Australian capital city">
+  </p>
+
+  <p>
+    Selected value: {{ selectedValue }}
+  </p>
+
+</div>
+
+
+<style></style>
+
+<script>
+  import Awesomplete from 'awesomplete';
+  import 'awesomplete/awesomplete.css'
+
+  export default {
+    oncreate() {
+      this.autocomplete = new Awesomplete(document.getElementById('autoCompleteInput'), {
+        list: ['Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Darwin', 'Canberra', 'Hobart', 'Brisbane']
+      });
+    },
+    data() {
+      return {
+        selectedValue: ''
+      }
+    }
+  };
+</script>

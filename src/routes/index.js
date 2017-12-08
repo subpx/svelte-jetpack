@@ -7,6 +7,7 @@ import SignIn from '../components/SignIn/SignIn.html';
 import FormValidation from '../components/demos/FormValidation/FormValidation.html';
 import Sortable from '../components/demos/Sortable/Sortable.html';
 import DatePicker from '../components/demos/DatePicker/DatePicker.html';
+import AutoComplete from '../components/demos/AutoComplete/AutoComplete.html';
 
 const routes = () => {
   stateRouter.addState({
@@ -60,6 +61,12 @@ const routes = () => {
     name: 'app.datePicker',
     route: '/datePicker',
     template: DatePicker
+  });
+
+  stateRouter.addState({
+    name: 'app.autoComplete',
+    route: '/autoComplete',
+    template: AutoComplete
   });
 
   stateRouter.on('routeNotFound', (route, parameters) => {
