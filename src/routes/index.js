@@ -6,6 +6,7 @@ import Child from '../components/Child/Child.html';
 import SignIn from '../components/SignIn/SignIn.html';
 import FormValidation from '../components/demos/FormValidation/FormValidation.html';
 import Sortable from '../components/demos/Sortable/Sortable.html';
+import DatePicker from '../components/demos/DatePicker/DatePicker.html';
 
 const routes = () => {
   stateRouter.addState({
@@ -53,6 +54,12 @@ const routes = () => {
     name: 'app.sortable',
     route: '/sortable',
     template: Sortable
+  });
+
+  stateRouter.addState({
+    name: 'app.datePicker',
+    route: '/datePicker',
+    template: DatePicker
   });
 
   stateRouter.on('routeNotFound', (route, parameters) => {

@@ -1,0 +1,29 @@
+<div>
+  <h3>Date Picker</h3>
+
+  <p>
+    <input type="text" id="flatpickr" bind:value="inputDate" placeholder="Select a date">
+  </p>
+
+</div>
+
+
+<style></style>
+
+<script>
+  import flatpickr from 'flatpickr';
+  import 'flatpickr/dist/themes/airbnb.css';
+
+  export default {
+    oncreate() {
+      this.datePicker = flatpickr("#flatpickr", {
+        dateFormat: 'd/m/Y'
+      });
+    },
+    data() {
+      return {
+        inputDate: '01/09/1980'
+      };
+    },
+  };
+</script>
