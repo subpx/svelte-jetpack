@@ -1,13 +1,13 @@
 import stateRouter from '../services/router';
 import auth from '../services/auth';
-import App from '../components/App/App.html';
-import Dashboard from '../components/Dashboard/Dashboard.html';
-import Child from '../components/Child/Child.html';
-import SignIn from '../components/SignIn/SignIn.html';
-import FormValidation from '../components/demos/FormValidation/FormValidation.html';
-import Sortable from '../components/demos/Sortable/Sortable.html';
-import DatePicker from '../components/demos/DatePicker/DatePicker.html';
-import AutoComplete from '../components/demos/AutoComplete/AutoComplete.html';
+import App from '../modules/App/App.html';
+import Dashboard from '../modules/Dashboard/Dashboard.html';
+import Child from '../modules/Child/Child.html';
+import SignIn from '../modules/SignIn/SignIn.html';
+import FormValidation from '../modules/Shared/FormValidation/FormValidation.html';
+import Sortable from '../modules/Shared/Sortable/Sortable.html';
+import DatePicker from '../modules/Shared/DatePicker/DatePicker.html';
+import AutoComplete from '../modules/Shared/AutoComplete/AutoComplete.html';
 
 const routes = () => {
   stateRouter.addState({
