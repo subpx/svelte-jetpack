@@ -5,6 +5,7 @@ import Dashboard from '../components/Dashboard/Dashboard.html';
 import Child from '../components/Child/Child.html';
 import SignIn from '../components/SignIn/SignIn.html';
 import FormValidation from '../components/demos/FormValidation/FormValidation.html';
+import Sortable from '../components/demos/Sortable/Sortable.html';
 
 const routes = () => {
   stateRouter.addState({
@@ -46,6 +47,12 @@ const routes = () => {
     name: 'app.formValidation',
     route: '/formValidation',
     template: FormValidation
+  });
+
+  stateRouter.addState({
+    name: 'app.sortable',
+    route: '/sortable',
+    template: Sortable
   });
 
   stateRouter.on('routeNotFound', (route, parameters) => {

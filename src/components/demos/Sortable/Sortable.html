@@ -1,0 +1,169 @@
+<div>
+  <h3>Draggable/sortable grid</h3>
+
+  <p>Order: {{ widgets.toString() }}</p>
+
+  <div id="grid" class="grid">
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+
+    <div class="item">
+      <div class="item_handle"></div>
+      <div class="item_sm" title="Minimise" on:click="minimise(event)"></div>
+      <div class="item_lg" title="Maximise" on:click="maximise(event)"></div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .grid {
+    background: black;
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grid::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .item {
+    background: darkslategray;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    margin: 10px;
+    width: 570px;
+    height: 300px;
+  }
+
+  .item-full {
+    width: 1160px;
+    height: 450px;
+  }
+
+  .sortable-ghost {
+    background: yellow;
+    opacity: 0.4;
+  }
+
+  .sortable-ghost * {
+    visibility: hidden;
+  }
+
+  .item img {
+    display: block;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+  }
+
+  .item_handle {
+    background: white;
+    opacity: 0.3;
+    height: 20px;
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    cursor: move;
+    cursor: -webkit-grabbing;
+  }
+
+  .item_sm {
+    background: black;
+    opacity: 0.3;
+    height: 20px;
+    width: 25px;
+    position: absolute;
+    top: 10px;
+    right: 70px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .item_lg {
+    background: black;
+    opacity: 0.3;
+    height: 20px;
+    width: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  import Sortable from 'sortablejs';
+
+  export default {
+    data() {
+      return {
+        widgets: [1,2,3,4,5,6]
+      };
+    },
+    oncreate() {
+      this.grid = Sortable.create(document.getElementById('grid'), {
+        handle: '.item_handle',
+        fallbackTolerance: 50,
+        animation: 150,
+        onMove(event) {
+          if(event.willInsertAfter === undefined) {
+            return false;
+          }
+        }
+      });
+
+      Sortable.utils.on(this.grid.el, 'sort', this.onSort.bind(this));
+    },
+    methods: {
+      minimise(event) {
+        const widget = event.target.parentElement;
+        widget.classList.remove('item-full');
+      },
+      maximise(event) {
+        const widget = event.target.parentElement;
+        widget.classList.add('item-full');
+      },
+      onSort(event) {
+        const widgets = [...this.get('widgets')];
+        widgets.splice(event.newIndex, 0, widgets.splice(event.oldIndex, 1)[0]);
+
+        this.set({widgets});
+      }
+    }
+  };
+</script>
