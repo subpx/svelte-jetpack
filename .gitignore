@@ -1,4 +1,5 @@
 .idea
 node_modules
 output
-public/*.js
+public/bundle.js
+public/bundle.css
