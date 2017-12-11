@@ -1,7 +1,7 @@
 <div>
   <h3>Draggable/sortable grid</h3>
 
-  <p>Order: {{ widgets.toString() }}</p>
+  <p>Order: {{ widgetOrder.toString() }}</p>
 
   <div id="grid" class="grid">
     {{ #each widgets as widget, i }}
@@ -50,12 +50,12 @@
     height: 450px;
   }
 
-  ref:sortable-ghost {
+  .sortable-ghost {
     background: yellow;
     opacity: 0.4;
   }
 
-  .item_sortable-ghost * {
+  .sortable-ghost * {
     visibility: hidden;
   }
 
@@ -110,6 +110,7 @@
   export default {
     data() {
       return {
+        widgetOrder: [0,1,2,3,4,5],
         widgets: [ {wide: false }, {wide: false }, {wide: false }, {wide: false }, {wide: false }, {wide: false }]
       };
     },
@@ -144,10 +145,10 @@
       },
 
       onSort(event) {
-        const widgets = [...this.get('widgets')];
-        widgets.splice(event.newIndex, 0, widgets.splice(event.oldIndex, 1)[0]);
+        const widgetOrder = [...this.get('widgetOrder')];
+        widgetOrder.splice(event.newIndex, 0, widgetOrder.splice(event.oldIndex, 1)[0]);
 
-        this.set({widgets});
+        this.set({widgetOrder});
       }
     }
   };
