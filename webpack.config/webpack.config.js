@@ -56,6 +56,13 @@ module.exports = {
           fallback: 'style-loader',
           use: [{loader: 'css-loader', options: {sourceMap: !prod}}]
         })
+      },
+      {
+        test: /\.svg/,
+        use: {
+          loader: 'svg-url-loader',
+          options: {}
+        }
       }
     ]
   },

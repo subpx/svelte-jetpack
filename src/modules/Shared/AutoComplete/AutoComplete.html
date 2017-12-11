@@ -2,7 +2,7 @@
   <h3>Auto Complete</h3>
 
   <p>
-    <input type="text" id="autoCompleteInput" bind:value='selectedValue' placeholder="Select an Australian capital city">
+    <select id="autocomplete" multiple></select>
   </p>
 
   <p>
@@ -15,13 +15,23 @@
 <style></style>
 
 <script>
-  import Awesomplete from 'awesomplete';
-  import 'awesomplete/awesomplete.css'
+  import Choices from 'choices.js/assets/scripts/dist/choices';
+  import 'choices.js/assets/styles/css/choices.css';
 
   export default {
     oncreate() {
-      this.autocomplete = new Awesomplete(document.getElementById('autoCompleteInput'), {
-        list: ['Sydney', 'Melbourne', 'Adelaide', 'Perth', 'Darwin', 'Canberra', 'Hobart', 'Brisbane']
+      this.autocomplete = new Choices(document.getElementById('autocomplete'), {
+        searchPlaceholderValue: 'Search for...',
+        removeItemButton: 'true',
+        choices: [
+          { value: 'One', label: 'Label One' },
+          { value: 'Two', label: 'Label Two' },
+          { value: 'Three', label: 'Label Three' },
+          { value: '4', label: 'Label 4' },
+          { value: '5', label: 'Label 5' },
+          { value: '6', label: 'Label 6' },
+          { value: '7', label: 'Label 7' }
+        ]
       });
     },
     data() {
