@@ -67,13 +67,13 @@ module.exports = {
     ]
   },
   plugins: [
-    // new StyleLintPlugin({
-    //   configFile: '.stylelintrc',
-    //   context: 'src',
-    //   files: '**/*.html',
-    //   failOnError: false,
-    //   quiet: false
-    // }),
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.html',
+      failOnError: false,
+      quiet: false
+    }),
     new ExtractTextPlugin('bundle.css'),
     new LodashModuleReplacementPlugin,
     prod && new webpack.optimize.ModuleConcatenationPlugin(),

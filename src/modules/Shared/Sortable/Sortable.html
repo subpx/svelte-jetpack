@@ -105,8 +105,8 @@
   export default {
     data() {
       return {
-        widgetOrder: [0,1,2,3,4,5],
-        widgets: [ {wide: false }, {wide: false }, {wide: false }, {wide: false }, {wide: false }, {wide: false }]
+        widgetOrder: [0, 1, 2, 3, 4, 5],
+        widgets: [{wide: false}, {wide: false}, {wide: false}, {wide: false}, {wide: false}, {wide: false}]
       };
     },
     oncreate() {
@@ -115,7 +115,7 @@
         fallbackTolerance: 50,
         animation: 150,
         onMove(event) {
-          if(event.willInsertAfter === undefined) {
+          if (event.willInsertAfter === undefined) {
             return false;
           }
         }
@@ -125,18 +125,14 @@
     },
     methods: {
       minimise(event, index) {
-        // const widget = event.target.parentElement;
-        // widget.classList.remove('item-full');
         const widgets = this.get('widgets');
         widgets[index].wide = false;
-        this.set({ widgets });
+        this.set({widgets});
       },
       maximise(event, index) {
-        // const widget = event.target.parentElement;
-        // widget.classList.add('item-full');
         const widgets = this.get('widgets');
         widgets[index].wide = true;
-        this.set({ widgets });
+        this.set({widgets});
       },
 
       onSort(event) {
