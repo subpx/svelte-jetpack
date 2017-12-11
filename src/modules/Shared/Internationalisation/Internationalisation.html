@@ -1,0 +1,33 @@
+<div>
+  <h2>Internationalisation</h2>
+  <h3>{{ title }}</h3>
+  <p>{{ translate.t('internationalisation:subTitle') }}</p>
+</div>
+
+<style>
+  ref:foo {
+    background: #000;
+  }
+</style>
+
+<script>
+  import './locales';
+  import translate from '../../../services/translate';
+
+  export default {
+    oncreate() {
+      this.set({
+        title: translate.t('internationalisation:title')
+      });
+    },
+    data() {
+      return {
+        title: '',
+        subTitle: ''
+      }
+    },
+    helpers: {
+      translate
+    }
+  };
+</script>

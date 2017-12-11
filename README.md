@@ -2,6 +2,11 @@
 
 Svelte starter kit — router, global state management with unit and end-to-end testing included.
 
+### Demo
+This demo app is continuously deployed using Netlify's automated platform.
+
+https://infallible-volhard-5c3c65.netlify.com/
+
 ### Gettting started
 Requires Node.js 8.4.0+ 
 
@@ -45,3 +50,21 @@ WebStorm IDE has some quirks with Svelte handlebar syntax. To fix update these s
 * Preferences > Inspections > Disable all XML inspections
 * Preferences > Inspections > Disable Unknown HTML tag attribute
 * Preferences > Inspections >  Disable HTML file reference problems
+
+
+### Demos
+Sortable Draggable Grid 
+https://github.com/RubaXa/Sortable
+
+Form Validation
+http://rickharrison.github.io/validate.js/
+
+Tooltips
+https://github.com/atomiks/tippyjs
+
+Internationalisation
+https://github.com/i18next/i18next
+
+Date Picker
+https://chmln.github.io/flatpickr/
+

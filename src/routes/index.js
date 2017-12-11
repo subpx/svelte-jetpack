@@ -9,6 +9,7 @@ import Sortable from '../modules/Shared/Sortable/Sortable.html';
 import DatePicker from '../modules/Shared/DatePicker/DatePicker.html';
 import AutoComplete from '../modules/Shared/AutoComplete/AutoComplete.html';
 import ToolTip from '../modules/Shared/ToolTip/ToolTip.html';
+import Internationalisation from '../modules/Shared/Internationalisation/Internationalisation.html';
 import PageNotFound from '../modules/PageNotFound/PageNotFound.html';
 
 stateRouter.addState({
@@ -80,6 +81,12 @@ stateRouter.addState({
   name: 'app.toolTip',
   route: '/toolTip',
   template: ToolTip
+});
+
+stateRouter.addState({
+  name: 'app.internationalisation',
+  route: '/internationalisation',
+  template: Internationalisation
 });
 
 stateRouter.on('routeNotFound', (route) => {
