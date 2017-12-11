@@ -1,8 +1,8 @@
-<div>
+<div class="autocomplete">
   <h3>Auto Complete</h3>
 
   <p>
-    <select id="autocomplete" multiple></select>
+    <select id="autocomplete" multiple on:change="onSelectChange(event)"></select>
   </p>
 
   <p>
@@ -11,14 +11,44 @@
 
 </div>
 
+<style>
+  .autocomplete .choices__inner {
+    width: 500px;
+    background-color: #fff;
+    font-size: 14px;
+    min-height: auto;
+  }
 
-<style></style>
+  .autocomplete .choices__input {
+    background-color: #fff;
+  }
+</style>
 
 <script>
   import Choices from 'choices.js/assets/scripts/dist/choices';
   import 'choices.js/assets/styles/css/choices.css';
 
+  function getSelectValues(select) {
+    const result = [];
+    const options = select && select.options;
+    let opt;
+
+    for (let i=0, iLen=options.length; i<iLen; i+=1) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
+  }
+
   export default {
+    data() {
+      return {
+        selectedValue: ''
+      }
+    },
     oncreate() {
       this.autocomplete = new Choices(document.getElementById('autocomplete'), {
         searchPlaceholderValue: 'Search for...',
@@ -34,9 +64,9 @@
         ]
       });
     },
-    data() {
-      return {
-        selectedValue: ''
+    methods: {
+      onSelectChange(event) {
+        console.log(getSelectValues(event.target));
       }
     }
   };
