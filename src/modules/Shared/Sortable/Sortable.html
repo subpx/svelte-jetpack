@@ -6,7 +6,7 @@
   <div id="grid" class="grid">
     {{ #each widgets as widget, i }}
     <div class='item {{widget.wide ? "item-full" : ""}}'>
-      {{ widget.wide }}
+      {{ i }}
       <div class="item_handle"></div>
       <div class="item_sm" title="Minimise" on:click="minimise(event, i)"></div>
       <div class="item_lg" title="Maximise" on:click="maximise(event, i)"></div>
@@ -38,11 +38,6 @@
     margin: 10px;
     width: 570px;
     height: 300px;
-  }
-
-  :global(.item-full) {
-    width: 1160px !important;
-    height: 450px !important;
   }
 
   .item-full {
