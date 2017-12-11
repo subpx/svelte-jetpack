@@ -71,7 +71,7 @@ module.exports = {
     new LodashModuleReplacementPlugin,
     prod && new webpack.optimize.ModuleConcatenationPlugin(),
     prod && new UglifyJSPlugin(),
-    prod && new BundleAnalyzerPlugin(),
+    // prod && new BundleAnalyzerPlugin(),
   ].filter(Boolean),
   devServer: {
     contentBase: path.join(__dirname, "/../public"),
