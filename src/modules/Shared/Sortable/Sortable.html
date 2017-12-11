@@ -6,6 +6,7 @@
   <div id="grid" class="grid">
     {{ #each widgets as widget, i }}
     <div class='item {{widget.wide ? "item-full" : ""}}'>
+      {{ i }}
       <div class="item_handle"></div>
       <div class="item_sm" title="Minimise" on:click="minimise(event, i)"></div>
       <div class="item_lg" title="Maximise" on:click="maximise(event, i)"></div>
