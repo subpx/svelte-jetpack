@@ -76,8 +76,14 @@ const routes = () => {
     template: ToolTip
   });
 
-  stateRouter.on('routeNotFound', (route, parameters) => {
-    console.log('routeNotFound', route, parameters);
+  stateRouter.on('routeNotFound', (route) => {
+    if(route === '/') {
+      stateRouter.go('signIn');
+    }
+    // stateRouter.go('not-found', {
+    //   route: route,
+    //   parameters: parameters
+    // })
   });
 
   stateRouter.on('stateChangeStart', (route, parameters) => {
