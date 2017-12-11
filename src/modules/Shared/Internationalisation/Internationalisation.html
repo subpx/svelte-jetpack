@@ -1,27 +1,33 @@
 <div>
-  <h3>Tool Tip</h3>
-
-  <p>Here is some test and <span class="tooltipElement" title="This is my tooltip">I have a tooltip</span></p>
+  <h2>Internationalisation</h2>
+  <h3>{{ title }}</h3>
+  <p>{{ translate.t('internationalisation:subTitle') }}</p>
 </div>
 
-
 <style>
-  .tooltipElement {
-    border-bottom: 2px solid blue;
+  ref:foo {
+    background: #000;
   }
 </style>
 
 <script>
-  import tippy from 'tippy.js';
+  import './locales';
+  import translate from '../../../services/translate';
 
   export default {
     oncreate() {
-      this.tooltip = tippy('.tooltipElement', {});
+      this.set({
+        title: translate.t('internationalisation:title')
+      });
     },
     data() {
       return {
-        selectedValue: ''
+        title: '',
+        subTitle: ''
       }
+    },
+    helpers: {
+      translate
     }
   };
 </script>

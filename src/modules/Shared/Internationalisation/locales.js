@@ -1,13 +1,13 @@
-import translate from '../../services/translate';
+import translate from '../../../services/translate';
 
-const namespace = 'signin';
+const namespace = 'internationalisation';
 
 translate.addResourceBundle('en', namespace, {
-  formTitle: 'Sign in form',
-  formIntro: 'Any user/password combo works...'
+  title: 'English Title',
+  subTitle: 'English subtitle'
 });
 
 translate.addResourceBundle('fr', namespace, {
-  formTitle: 'Inscrivez-vous',
-  formIntro: 'importe quel combo utilisateur / mot de passe fonctionne...'
+  title: 'French Title',
+  subTitle: 'French subtitle'
 });

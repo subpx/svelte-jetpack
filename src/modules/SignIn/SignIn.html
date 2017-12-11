@@ -1,6 +1,5 @@
-<h1>{{ translate.t('signin:formTitle') }}</h1>
-
-<p>{{ formIntro }}</p>
+<h1>Sign In</h1>
+<p>Any user/password combo works...</p>
 
 <form on:submit='handleSubmit(event)'>
     <input type='text' placeholder='username' bind:value='credentials.username'>
@@ -9,10 +8,8 @@
 </form>
 
 <script>
-  import './locales';
   import auth from '../../services/auth';
   import router from '../../services/router';
-  import translate from '../../services/translate';
 
   export default {
     data() {
@@ -23,11 +20,6 @@
           password: ''
         }
       }
-    },
-    oncreate() {
-      this.set({
-        formIntro: translate.t('signin:formIntro')
-      });
     },
     methods: {
       handleSubmit(event) {
@@ -48,9 +40,6 @@
 
         });
       }
-    },
-    helpers: {
-      translate
     }
   }
 </script>
