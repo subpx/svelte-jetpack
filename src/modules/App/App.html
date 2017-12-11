@@ -1,7 +1,13 @@
 <img src="/assets/svelte-logo.png">
 
 <div>
-  <h2>Authenticated App <small><a href="{{ asr.makePath('signIn') }}">Log out</a></small></h2>
+  <h2>
+    Authenticated App
+    <small>
+      <a href="{{ asr.makePath('app.dashboard') }}">Dashboard</a> |
+      <a href="{{ asr.makePath('signIn') }}">Log out</a>
+    </small>
+  </h2>
   <uiView></uiView>
 </div>
 
