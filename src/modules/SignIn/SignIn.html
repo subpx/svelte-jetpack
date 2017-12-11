@@ -1,6 +1,6 @@
 <h1>{{ translate.t('signin:formTitle') }}</h1>
 
-<p>Any user/password combo works...</p>
+<p>{{ formIntro }}</p>
 
 <form on:submit='handleSubmit(event)'>
     <input type='text' placeholder='username' bind:value='credentials.username'>
@@ -17,11 +17,17 @@
   export default {
     data() {
       return {
+        formIntro: '',
         credentials: {
           username: '',
           password: ''
         }
       }
+    },
+    oncreate() {
+      this.set({
+        formIntro: translate.t('signin:formIntro')
+      });
     },
     methods: {
       handleSubmit(event) {
