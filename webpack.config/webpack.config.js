@@ -3,8 +3,9 @@ const path = require("path");
 const webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 const prod = process.env.NODE_ENV === 'production';
 const babelSettings = JSON.parse(readFileSync(__dirname + '/../.babelrc'));
@@ -59,6 +60,13 @@ module.exports = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src',
+      files: '**/*.html',
+      failOnError: false,
+      quiet: false
+    }),
     new ExtractTextPlugin('bundle.css'),
     new LodashModuleReplacementPlugin,
     prod && new webpack.optimize.ModuleConcatenationPlugin(),
