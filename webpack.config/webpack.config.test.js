@@ -1,7 +1,7 @@
 const {readFileSync} = require('fs');
 const glob = require("glob");
-
 const WebpackTapeRun = require('webpack-tape-run');
+
 const babelSettings = JSON.parse(readFileSync(__dirname + '/../.babelrc'));
 
 module.exports = {

@@ -1,6 +1,12 @@
 <h1>Sign In</h1>
 <p>Any user/password combo works...</p>
 
+{{#if error}}
+<div class="error">
+  Please enter a valid username and password
+</div>
+{{/if}}
+
 <form on:submit='handleSubmit(event)'>
     <input type='text' placeholder='username' bind:value='credentials.username'>
     <input type='password' placeholder='password' bind:value='credentials.password'>
@@ -14,6 +20,7 @@
   export default {
     data() {
       return {
+        error: false,
         formIntro: '',
         credentials: {
           username: '',
@@ -24,6 +31,15 @@
     methods: {
       handleSubmit(event) {
         event.preventDefault();
+
+        this.set({ error: false });
+
+        const credentials = this.get('credentials');
+
+        if(!credentials.username || !credentials.password) {
+          this.set({ error: true });
+          return false;
+        }
 
         auth.authenticate(this.get('credentials'))
           .then((response) => {
