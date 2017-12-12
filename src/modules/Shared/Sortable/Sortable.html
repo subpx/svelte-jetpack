@@ -5,7 +5,7 @@
 
   <div id="grid" class="grid">
     {{ #each widgets as widget, i }}
-    <div class='item {{widget.wide ? "item-full" : ""}}'>
+    <div class='item item-{{i}} {{widget.wide ? "item-full" : ""}}'>
       {{ i }}
       <div class="item_handle"></div>
       <div class="item_sm" title="Minimise" on:click="minimise(event, i)"></div>
@@ -40,33 +40,37 @@
     height: 300px;
   }
 
-  .item:nth-child(0) {
+  .item-0 {
+    background: #903;
+  }
+
+  .item-1 {
     background: #036;
   }
 
-  .item:nth-child(1) {
+  .item-2 {
     background: #039;
   }
 
-  .item:nth-child(2) {
+  .item-3 {
     background: #309;
   }
 
-  .item:nth-child(3) {
+  .item-4 {
     background: #390;
   }
 
-  .item:nth-child(4) {
+  .item-5 {
     background: #906;
-  }
-
-  .item:nth-child(5) {
-    background: #903;
   }
 
   .item-full {
     width: 1160px;
     height: 450px;
+  }
+
+  .sortable-chosen {
+    opacity: 0.8;
   }
 
   .sortable-ghost {
