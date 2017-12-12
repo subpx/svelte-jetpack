@@ -40,14 +40,40 @@
     height: 300px;
   }
 
+  .item:nth-child(0) {
+    background: #036;
+  }
+
+  .item:nth-child(1) {
+    background: #039;
+  }
+
+  .item:nth-child(2) {
+    background: #309;
+  }
+
+  .item:nth-child(3) {
+    background: #390;
+  }
+
+  .item:nth-child(4) {
+    background: #906;
+  }
+
+  .item:nth-child(5) {
+    background: #903;
+  }
+
   .item-full {
     width: 1160px;
     height: 450px;
   }
 
   .sortable-ghost {
-    background: yellow;
-    opacity: 0.4;
+    box-sizing: border-box;
+    border: 5px dotted #fff;
+    background: transparent !important;
+    opacity: 1;
   }
 
   .sortable-ghost * {
