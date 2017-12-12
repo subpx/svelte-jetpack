@@ -1,13 +1,18 @@
 <div>
   <h3>Tool Tip</h3>
 
-  <p>Here is some test and <span class="tooltipElement" title="This is my tooltip">I have a tooltip</span></p>
+  <p>Here is some test and <span class="tooltipElement" title="This is my tooltip">I have a tooltip</span> and this
+    one has a <span id="popperElement" class="popperElement" title="This is my popper">popper</span>.</p>
 </div>
 
 
 <style>
   .tooltipElement {
     border-bottom: 2px solid blue;
+  }
+
+  .popperElement {
+    border-bottom: 2px solid red;
   }
 </style>
 
@@ -16,7 +21,15 @@
 
   export default {
     oncreate() {
+      const popperElem = document.getElementById('popperElement');
+
       this.tooltip = tippy('.tooltipElement', {});
+      this.popper = tippy('#popperElement', {
+        trigger: 'manual',
+        hideOnClick: false
+      });
+
+      console.log(popperElem._tippy.show(0));
     },
     data() {
       return {
