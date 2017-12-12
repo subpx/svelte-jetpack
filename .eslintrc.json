@@ -4,7 +4,8 @@
     "prettier"
   ],
   "rules": {
-    "consistent-return": ["warn"]
+    "consistent-return": ["warn"],
+    "no-underscore-dangle": ["warn"]
   },
   "plugins": [
     "prettier",
