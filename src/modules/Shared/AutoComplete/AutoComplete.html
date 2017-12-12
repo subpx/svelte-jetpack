@@ -1,73 +1,75 @@
 <div class="autocomplete">
   <h3>Auto Complete</h3>
+  <p>Search for a Nirvana album eg. 'Nevermind'</p>
 
   <p>
-    <select id="autocomplete" multiple on:change="onSelectChange(event)"></select>
-  </p>
+    {{#if selected}}
+    <img src="{{selected.thumb}}" />
+    {{/if}}
 
-  <p>
-    Selected value: {{ selectedValue }}
+    <select id="autocomplete"></select>
   </p>
-
 </div>
 
 <style>
-  .autocomplete .choices__inner {
-    width: 500px;
-    background-color: #fff;
-    font-size: 14px;
-    min-height: auto;
-  }
 
-  .autocomplete .choices__input {
-    background-color: #fff;
-  }
 </style>
 
 <script>
+  import {find} from 'lodash';
   import Choices from 'choices.js/assets/scripts/dist/choices';
   import 'choices.js/assets/styles/css/choices.css';
-
-  function getSelectValues(select) {
-    const result = [];
-    const options = select && select.options;
-    let opt;
-
-    for (let i=0, iLen=options.length; i<iLen; i+=1) {
-      opt = options[i];
-
-      if (opt.selected) {
-        result.push(opt.value || opt.text);
-      }
-    }
-    return result;
-  }
+  import './choices.custom.css';
 
   export default {
     data() {
       return {
-        selectedValue: ''
+        options: [],
+        selected: null,
       }
     },
     oncreate() {
-      this.autocomplete = new Choices(document.getElementById('autocomplete'), {
-        searchPlaceholderValue: 'Search for...',
-        removeItemButton: 'true',
-        choices: [
-          { value: 'One', label: 'Label One' },
-          { value: 'Two', label: 'Label Two' },
-          { value: 'Three', label: 'Label Three' },
-          { value: '4', label: 'Label 4' },
-          { value: '5', label: 'Label 5' },
-          { value: '6', label: 'Label 6' },
-          { value: '7', label: 'Label 7' }
-        ]
+      const autocompleteInput = document.getElementById('autocomplete');
+
+      this.autocomplete = new Choices(autocompleteInput, {
+        searchEnabled: true,
+        shouldSortItems: false
       });
-    },
-    methods: {
-      onSelectChange(event) {
-        console.log(getSelectValues(event.target));
-      }
+
+      autocompleteInput.addEventListener('search', (event) => {
+        const searchQuery = event.detail.value;
+        const minSearchLength = 3;
+
+        if(searchQuery.length < minSearchLength) {
+          return false;
+        }
+
+        fetch(`https://api.discogs.com//database/search?q=${searchQuery}&per_page=10&artist=nirvana&format=album&token=XIpbbEvYPmCgkMkMtmcjAEsnHsFRjUXZojSDAXIu`)
+          .then((response) => {
+            response.json().then((data) => {
+              this.set({
+                options: data.results
+              });
+
+              this.autocomplete.setChoices(this.get('options'), 'id', 'title', true);
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+
+        return true;
+      }, false);
+
+      autocompleteInput.addEventListener('change', (event) => {
+        const options = this.get('options');
+        const selectedId = event.detail.value;
+        const selectedItem = find(options, (option) => option.id === selectedId);
+
+        this.set({
+          selected: selectedItem
+        });
+      }, false);
     }
   };
 </script>

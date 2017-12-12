@@ -1,0 +1,67 @@
+<div class="autocomplete">
+  <h3>Multi Complete</h3>
+
+  <p>
+    {{#if selectedValues.length}}
+    <div>Selected values: {{ selectedValues.toString() }}</div>
+    {{/if}}
+
+    <select id="multiSelect" multiple on:change="onSelectChange(event)"></select>
+  </p>
+</div>
+
+<style>
+
+</style>
+
+<script>
+  import Choices from 'choices.js/assets/scripts/dist/choices';
+  import 'choices.js/assets/styles/css/choices.css';
+  import './choices.custom.css';
+
+  function getSelectValues(select) {
+    const result = [];
+    const options = select && select.options;
+    let opt;
+
+    for (let i=0, iLen=options.length; i<iLen; i+=1) {
+      opt = options[i];
+
+      if (opt.selected) {
+        result.push(opt.value || opt.text);
+      }
+    }
+    return result;
+  }
+
+  export default {
+    data() {
+      return {
+        selectedValues: []
+      }
+    },
+    oncreate() {
+      this.multiSelect = new Choices(document.getElementById('multiSelect'), {
+        searchPlaceholderValue: 'Search for...',
+        removeItemButton: 'true',
+        choices: [
+          { value: 'act', label: 'Australian Capitol Territory' },
+          { value: 'nsw', label: 'New South Wales' },
+          { value: 'nt', label: 'Northern Territory' },
+          { value: 'qld', label: 'Queensland' },
+          { value: 'tas', label: 'Tasmania' },
+          { value: 'sa', label: 'South Australia' },
+          { value: 'vic', label: 'Victoria' },
+          { value: 'wa', label: 'Western Australia' }
+        ]
+      });
+    },
+    methods: {
+      onSelectChange(event) {
+        this.set({
+          'selectedValues': getSelectValues(event.target)
+        });
+      }
+    }
+  };
+</script>

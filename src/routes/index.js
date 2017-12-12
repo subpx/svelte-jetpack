@@ -7,6 +7,8 @@ import SignIn from '../modules/SignIn/SignIn.html';
 import FormValidation from '../modules/Shared/FormValidation/FormValidation.html';
 import Sortable from '../modules/Shared/Sortable/Sortable.html';
 import DatePicker from '../modules/Shared/DatePicker/DatePicker.html';
+import CustomSelect from '../modules/Shared/CustomSelect/CustomSelect.html';
+import MultiSelect from '../modules/Shared/MultiSelect/MultiSelect.html';
 import AutoComplete from '../modules/Shared/AutoComplete/AutoComplete.html';
 import ToolTip from '../modules/Shared/ToolTip/ToolTip.html';
 import Internationalisation from '../modules/Shared/Internationalisation/Internationalisation.html';
@@ -69,6 +71,18 @@ stateRouter.addState({
   name: 'app.datePicker',
   route: '/datePicker',
   template: DatePicker
+});
+
+stateRouter.addState({
+  name: 'app.customSelect',
+  route: '/customSelect',
+  template: CustomSelect
+});
+
+stateRouter.addState({
+  name: 'app.multiSelect',
+  route: '/multiSelect',
+  template: MultiSelect
 });
 
 stateRouter.addState({

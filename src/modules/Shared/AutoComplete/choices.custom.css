@@ -1,0 +1,39 @@
+.choices {
+  font-size: inherit;
+  margin: 0;
+}
+
+.choices__inner {
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-size: inherit;
+  min-height: auto;
+}
+
+.choices__input {
+  background-color: #fff;
+}
+
+.choices__list--multiple .choices__item {
+  color: #fff;
+  border: 1px solid #00578d;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.03);
+  text-shadow: 0 1px 0 rgba(0, 51, 83, 0.3);
+  background-color: #1b9dec;
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin: 0 3px 3px 0;
+}
+
+.choices[data-type*="select-multiple"] .choices__button,
+.choices[data-type*="text"] .choices__button {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0;
+  border-left: none;
+  width: 15px;
+  line-height: 1;
+  opacity: 1;
+}

@@ -1,0 +1,35 @@
+<div>
+  <h3>Custom Select</h3>
+
+  <p>
+    <select id="customSelect"></select>
+  </p>
+</div>
+
+<style>
+
+</style>
+
+<script>
+  import Choices from 'choices.js/assets/scripts/dist/choices';
+  import 'choices.js/assets/styles/css/choices.css';
+  import './choices.custom.css';
+
+  export default {
+    oncreate() {
+      this.customSelect = new Choices(document.getElementById('customSelect'), {
+        searchEnabled: false,
+        choices: [
+          { value: 'act', label: 'Australian Capitol Territory' },
+          { value: 'nsw', label: 'New South Wales' },
+          { value: 'nt', label: 'Northern Territory' },
+          { value: 'qld', label: 'Queensland' },
+          { value: 'tas', label: 'Tasmania' },
+          { value: 'sa', label: 'South Australia' },
+          { value: 'vic', label: 'Victoria' },
+          { value: 'wa', label: 'Western Australia' }
+        ]
+      });
+    }
+  };
+</script>
