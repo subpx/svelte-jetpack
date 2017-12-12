@@ -70,9 +70,7 @@ module.exports = {
     new StyleLintPlugin({
       configFile: '.stylelintrc',
       context: 'src',
-      files: '**/*.html',
-      failOnError: false,
-      quiet: false
+      files: '**/*.html'
     }),
     new ExtractTextPlugin('bundle.css'),
     new LodashModuleReplacementPlugin,
