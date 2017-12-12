@@ -18,6 +18,6 @@ describe('SignIn module', () => {
     cy.get('input[type=text]').type('Cypress Hill');
     cy.get('input[type=password]').type('password');
     cy.get('form button[type=submit]').click();
-    cy.hash().should('eq', '#/app/dashboard');
+    cy.url().should('include', '/app/dashboard');
   });
 });
