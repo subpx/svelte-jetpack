@@ -1,8 +1,10 @@
 <div>
   <h3>Tool Tip</h3>
 
-  <p>Here is some test and <span class="tooltipElement" title="This is my tooltip">I have a tooltip</span> and this
-    one has a <span id="popperElement" class="popperElement" title="This is my popper">popper</span>.</p>
+  <p>
+    Here is some test and <span id="tooltipElement" class="tooltipElement" title="This is my tooltip">I have a
+    tooltip</span> and this one has a <span id="popperElement" class="popperElement" title="This is my popper">popper</span>.
+  </p>
 </div>
 
 
@@ -20,21 +22,23 @@
   import tippy from 'tippy.js';
 
   export default {
+    data() {
+      return {
+        selectedValue: ''
+      }
+    },
     oncreate() {
-      const popperElem = document.getElementById('popperElement');
-
-      this.tooltip = tippy('.tooltipElement', {});
+      this.tooltip = tippy('#tooltipElement', {});
       this.popper = tippy('#popperElement', {
         trigger: 'manual',
         hideOnClick: false
       });
 
-      console.log(popperElem._tippy.show(0));
+      document.getElementById('popperElement')._tippy.show(0);
     },
-    data() {
-      return {
-        selectedValue: ''
-      }
+    ondestroy() {
+      document.getElementById('tooltipElement')._tippy.destroy();
+      document.getElementById('popperElement')._tippy.destroy();
     }
   };
 </script>
