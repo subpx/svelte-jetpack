@@ -1,4 +1,6 @@
 {
   "baseUrl": "http://localhost:9000",
-  "videoRecording": false
+  "videoRecording": false,
+  "integrationFolder": "src",
+  "ignoreTestFiles": "/**/!(*.spec.js)"
 }
