@@ -1,0 +1,16 @@
+<div>
+  {{ componentName }}
+</div>
+
+<script>
+  export default {
+    data() {
+      return {
+        componentName: '<%= name %>'
+      }
+    },
+    oncreate() {
+      console.log('<%= name %> component');
+    }
+  }
+</script>
